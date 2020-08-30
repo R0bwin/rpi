@@ -46,6 +46,23 @@ ref.on('value',function(childsnapshot,prevchildname){
 	    console.log(u.val());
     });
     if(childsnapshot.val() == 2) {
-    	const iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 200);
+    	setIntervalTimes(function() {
+    		led.writeSync(led.readSync() ^ 1);
+    	}, 200, 6);
+    } else {
+
     }
 })
+
+
+function setIntervalTimes(callback, delay, repetitions) {
+    var x = 0;
+    var intervalID = window.setInterval(function () {
+
+       callback();
+
+       if (++x === repetitions) {
+           window.clearInterval(intervalID);
+       }
+    }, delay);
+}
