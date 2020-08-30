@@ -28,15 +28,24 @@ ref.once("value", function(snapshot) {
   	console.log(snapshot.val());
 });
 
-
 ref.on('child_changed',function(childsnapshot,prevchildname){
 	console.log("event occured1: "+childsnapshot);
 	childsnapshot.forEach((u, key) => {
 	    // u contains your user data object which is like u.uid and u.email or whatever keys you got.
 	    console.log(key, 'key here contains the strange "firebase array index key"');
 	    console.log(u.val());
-	    if(u.val() == 1) {
-	    	console.log("high");
-	    }
     });
+})
+
+var ref = db.ref("/data");
+ref.on('value',function(childsnapshot,prevchildname){
+	console.log("event occured2: "+childsnapshot.val());
+	childsnapshot.forEach((u, key) => {
+	    // u contains your user data object which is like u.uid and u.email or whatever keys you got.
+	    console.log(key, 'key here contains the strange "firebase array index key"');
+	    console.log(u.val());
+    });
+    if(childsnapshot.val() == 2) {
+    	const iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 200);
+    }
 })
