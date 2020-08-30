@@ -37,7 +37,7 @@ ref.on('child_changed',function(childsnapshot,prevchildname){
     });
 })
 
-var ref = db.ref("/data/info");
+var ref = db.ref("/data");
 ref.on('value',function(childsnapshot,prevchildname){
 	console.log("event occured2: "+childsnapshot.val());
 	childsnapshot.forEach((u, key) => {
@@ -45,7 +45,7 @@ ref.on('value',function(childsnapshot,prevchildname){
 	    console.log(key, 'key here contains the strange "firebase array index key"');
 	    console.log(u.val());
     });
-    if(childsnapshot.val() == 3) {
+    if(childsnapshot.val() == 2) {
     	setIntervalTimes(function() {
     		led.writeSync(led.readSync() ^ 1);
     	}, 400, 10);
