@@ -48,7 +48,7 @@ ref.on('value',function(childsnapshot,prevchildname){
     if(childsnapshot.val() == 2) {
     	setIntervalTimes(function() {
     		led.writeSync(led.readSync() ^ 1);
-    	}, 200, 6);
+    	}, 400, 10);
     } else {
 
     }
