@@ -57,12 +57,12 @@ ref.on('value',function(childsnapshot,prevchildname){
 
 function setIntervalTimes(callback, delay, repetitions) {
     var x = 0;
-    var intervalID = window.setInterval(function () {
+    var intervalID = setInterval(function () {
 
        callback();
 
        if (++x === repetitions) {
-           window.clearInterval(intervalID);
+           clearInterval(intervalID);
        }
     }, delay);
 }
